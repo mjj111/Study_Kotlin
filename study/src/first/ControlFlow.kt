@@ -1,3 +1,5 @@
+package first
+
 /**
  * 코틀린에서는 @outer 이라고하는 레이블이 있다.
  * 해당 문법을 사용하면 break@outer 사용시,

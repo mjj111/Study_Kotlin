@@ -1,3 +1,5 @@
+package first
+
 /**
  * 코틀린은 비트연산을 특이하게도 기호가 아닌 문자로 되어있다.
  * and or xor inv

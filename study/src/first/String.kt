@@ -1,4 +1,4 @@
-import jdk.internal.org.jline.utils.Colors.s
+package first
 
 /**
  * 코틀린은 자바와 다른게 String에서 인덱스에 위치한 문자를 추출하는데 있어서 함수가 아닌
