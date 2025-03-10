@@ -7,10 +7,6 @@ fun main(){
     runBlocking { finalQuestion2() }
 }
 
-fun logging(msg: String) {
-    println("${Thread.currentThread().name} - ${LocalDateTime.now()} : $msg")
-}
-
 fun question1(){
     logging("1")
     runBlocking {
