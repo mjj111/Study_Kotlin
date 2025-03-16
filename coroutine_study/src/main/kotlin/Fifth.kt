@@ -36,7 +36,8 @@ class SimpleCoroutineScope(private val dispatcher: Dispatcher) : CoroutineScope 
     override fun launch(block: suspend CoroutineScope.() -> Unit): Job {
         val job = Job()
 
-        // Coroutine을 비동기적으로 실행
+        // 주어진 dispacher를 통해, 스레드에게 할일을 전달
+        // Coroutine을 생성 및 비동기적으로 실행
         dispatcher.dispatch {
             val continuation = block.createCoroutine(this, object : Continuation<Unit> {
                 override val context: CoroutineContext = EmptyCoroutineContext
@@ -72,6 +73,11 @@ fun main() {
 
     Thread.sleep(2000) // 메인 스레드 종료 방지
 }
+//(Main Thread) launch 실행 → Dispatcher를 통해 새 스레드에서 코루틴 실행.
+//(New Thread) Continuation을 만들어 실행을 관리.
+//(Main Thread) mySuspendFunction() 실행 → suspendCoroutine으로 일시 중단.
+//(New Thread) dispatcher.dispatch {}로 새로운 스레드에서 실행 재개.
+//(New Thread) 실행이 재개되고 Coroutine finished! 출력.
 
 //@SinceKotlin("1.3")
 //@Suppress("UNCHECKED_CAST")
